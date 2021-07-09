@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.springframework.util.Assert;
 import service.BonusService;
 
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -19,7 +20,7 @@ class BonusServiceTeste {
         BonusService bonusService = new BonusService();
         BigDecimal valorBonus = bonusService.calcularBonus(new Funcionario("diony", LocalDate.now(), new BigDecimal(25000)));
 
-        assertEquals(new BigDecimal ("0.00"), valorBonus);              /* Ação */
+        assertEquals(new BigDecimal ("0.00"), );              /* Ação */
     }
     @Test
     void bonusOkSalarioBaixo() {
