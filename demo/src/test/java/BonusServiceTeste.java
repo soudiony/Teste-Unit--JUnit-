@@ -8,20 +8,28 @@ import service.BonusService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class BonusServiceTeste {
 
     @Test
-    void bonusZeroSalarioAlto() {                            /*Linha 1: Estanciar a Classe
-                                                              Linha 2: chamar metodo ao objeto instaciado da classe BonusService*/
-        //CENÁRIO (O METODO)
-        BonusService bonusService = new BonusService();
-        BigDecimal valorBonus = bonusService.calcularBonus(new Funcionario("diony", LocalDate.now(), new BigDecimal(25000)));
+    void bonusZeroSalarioAlto() {
 
-        assertEquals(new BigDecimal ("0.00"), );              /* Ação */
+        BonusService bonusService = new BonusService();
+        // "verificar Exception" assertThrows(IllegalArgumentException.class,
+        //      () ->  bonusService.calcularBonus(new Funcionario("diony", LocalDate.now(), new BigDecimal(25000))));
+
+    try {
+        bonusService.calcularBonus(new Funcionario("diony", LocalDate.now(), new BigDecimal(11000)));
+         fail("Erro ao rodar");
+
+    }catch (Exception e) {
+        assertEquals("SALARIO FORA DA TABELA, NAO DIREITO A BONUS", e.getMessage());
+
+        }
     }
+
     @Test
     void bonusOkSalarioBaixo() {
         BonusService bonusService = new BonusService();

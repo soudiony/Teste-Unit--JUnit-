@@ -1,6 +1,7 @@
 package modelo;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class Funcionario {
@@ -42,7 +43,12 @@ public class Funcionario {
     }
 
     public void reajusteSalario(BigDecimal reajuste) {
-        this.setSalario(this.getSalario().add(reajuste));
 
+        this.salario = this.salario.add(reajuste);
+        arremdodarSalario();
+   }
+
+    private void arremdodarSalario() {
+       this.salario = this.salario.setScale(2, RoundingMode.HALF_UP);
     }
 }
